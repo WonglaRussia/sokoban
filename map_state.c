@@ -1,9 +1,10 @@
-/* change_map_state.c */
-#include <ncurses.h>	/* KEY_DOWN KEY_UP et.c. */
-#include "play_map.h"  	/* MAP_SIZE map_type, definition of map objects WALL,ROCK e.t.c */
-#include "change_map_state.h"
+/* map_state.c */
+#include <ncurses.h>		/* KEY_DOWN KEY_UP et.c. */
+#include "map_functions.h"  /* MAP_SIZE, map_type, 
+							definitions of map objects WALL,ROCK e.t.c */
+#include "map_state.h"
 /* Changes the map state according to...
-key input (key arrows) and x_position y_postion (user coordinates) */
+key input(arrows) and user coordinates */
 void change_map_state(const int key, map_type map, int *y_position, int *x_position)
 {
 	/*Direction of the user`s movement [-1,0,+1]*/

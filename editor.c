@@ -1,17 +1,18 @@
 /* editor.c */
 #include "map_functions.h"
-#include "editor.h"
 #include "playground.h"	/* struct level */
+#include "editor_files.h" /* save_e_camp() load_e_camp() */
 #include "editor_functions.h" /*show_editor,mv_position,update_edited_map*/
+#include "editor.h"
 #include <curses.h>					/* echo(), KEY_ codes */
-#include <stdlib.h>			/* malloc */
+#include <stdlib.h>					/* malloc */
 void editor(void)
 {
-	int key;				/* Pushed button */
+	int key;						/* Pushed button */
 	int y_pos, x_pos;		/* Current position on the map*/
-	int my, mx;				/* Screen size */
+	int my, mx;					/* Screen size */
 	struct level *play_field;	
-	map_type map;			/* Map in the editor */
+	map_type map;				/* Map in the editor */
 
 	play_field = malloc(sizeof(struct level));
 	map = play_field -> map;
@@ -60,8 +61,16 @@ void editor(void)
 				break;
 			}
 			case 'n':{}			/* DRAFT */
-			case 's':{}
-			case 'g':{}			/* load a map */
+			case 's':{ 
+				save_e_camp( play_field );
+				show_editor(play_field, my, mx, y_pos, x_pos);
+				break;
+			}
+			case 'g':{
+				load_e_camp( play_field );
+				show_editor(play_field, my, mx, y_pos, x_pos);
+				break; 			/* load a map */
+			}
 			case 'q':{
 				free(play_field);
 				endwin();

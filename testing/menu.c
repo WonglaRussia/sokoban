@@ -50,9 +50,9 @@ int play_menu(struct list *options)
 			case KEY_DOWN:	{position++;break;}
 			case KEY_HOME:	{position = 1;break;}
 			case KEY_END:	{position = c;}
-			case 'q':		{return 0;}
+			case 'q':		{return c;}
 			case KEY_RIGHT: {;}
-			case KEY_ENTER:	{return position;}  		/*  */
+			case 10:	{return position;}  		/* 10 - ENTER in ASCII */
 			default: 		;
 		}
 		if(position < 1)
@@ -63,4 +63,3 @@ int play_menu(struct list *options)
 	}
 	return 0;
 }
-
