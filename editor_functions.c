@@ -2,7 +2,7 @@
 #include "map_functions.h"
 #include "playground.h" /* struct level */
 #include "editor_functions.h"
-#include "sup_ed_functions.h" /* show_edited_map() frunge_area() ...
+#include "editor_functions_support.h" /* show_edited_map() fringe_area() ...
 															... defines SIETE_BAR_WIDTH e.t.c		 */
 #include <curses.h>	/* KEY_ codes, resresh(), clear */
 //#include <stdlib.h> /* free() */

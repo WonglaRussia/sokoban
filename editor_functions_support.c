@@ -1,8 +1,8 @@
- /* sup_ed_functions.c */
+ /* editor_functions_support.c */
 #include "list.h"
 #include "map_functions.h"
 #include "playground.h"
-#include "sup_ed_functions.h"
+#include "editor_functions_support.h"
 #include <curses.h>
 #include <stdlib.h>
 
@@ -49,7 +49,7 @@ void show_side_bar(const int shft_y, const int shft_x)
 		mvprintw(shft_y + c, shft_x ,"%s", side_bar_content -> content);
 		temp = side_bar_content;
 		side_bar_content = side_bar_content -> next;
-		free(temp);		
+		free(temp);	
 	}
 }
 

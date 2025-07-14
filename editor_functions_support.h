@@ -1,6 +1,6 @@
- /* sup_ed_functions.h */
-#ifndef SUP_ED_FUNCTIONS_H
-#define SUP_ED_FUNCTIONS_H
+ /* editor_functions_suport.h */
+#ifndef EDITOR_FUNCTIONS_SUPPORT 
+#define EDITOR_FUNCTIONS_SUPPORT
 
 #define SITE_BAR_WIDTH 26
 #define MIN_MAP_SHIFT 5 /* Map`s left-top corner position use as DRAFT */
