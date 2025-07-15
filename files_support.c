@@ -37,14 +37,15 @@ static void get_str(char *str, int limit, int y, int x)
 	if string conteins letters return -1 */
 static int convert_chars(char *str)
 {
-	int d, tail;
-
+	int d, tail, i;
+	
 	if(!str[0])					/* string ended */
 		return 0;
 	d = str[0] - 48; 	/* convert current ascii to int '0' = 30*/
 	if( d < 0 || d > 9 || (-1 ==	(tail = convert_chars(str + 1))))
-		return -1; 			/* out of digit range here or in the tail */
-	d *= (strlen(str) * 10);	
+		return -1; 							/* out of digit range here or in the tail */
+	if((i = strlen(str + 1))) 	/* positional index 100 10 if tail length  */
+		d *= (strlen(str) * 10 * i);	
 	return d + tail;
 }
 /* Creates menu of .camp files suited in . directory.

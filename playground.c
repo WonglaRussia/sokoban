@@ -46,6 +46,10 @@ void play_level(struct level *src_playground)
 {
 	int key;
 	struct level *playground;
+	char *win_msg = "YOU WIN!!!";
+	int my,mx;
+
+	getmaxyx(stdscr,my,mx);	
 	playground = malloc(sizeof(struct level));
 	
 	/* If level == NULL - play test map */
@@ -94,13 +98,16 @@ void play_level(struct level *src_playground)
 				if(check_victory_condition((playground -> map)) == 0)
 					{
 						clear();
-						printw("YOU WIN!!!");
+						mvprintw(my/2,mx/2 - 5,"%s",win_msg);
 						refresh();
+						free(playground);
+						sleep(5);
+						return;
 					}
 				else
 					show_map(key, playground);
 			}
 		}
 	}
-	free(playground);
+	free(playground); /* DRAFT */
 }

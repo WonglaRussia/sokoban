@@ -7,8 +7,8 @@ all: sokoban
 clean:
 	rm -rf *.o
 
-sokoban: main.c playground.o map_state.o map_functions.o menu.o list.o files.o editor.o editor_functions.o editor_functions_support.o editor_files.o files_support.o
-	$(CC) $(FFLAGS) main.c playground.o map_state.o map_functions.o menu.o list.o files.o editor.o editor_functions.o editor_functions_support.o editor_files.o files_support.o -o $@
+sokoban: main.c playground.o map_state.o map_functions.o menu.o list.o files.o editor.o editor_functions.o editor_functions_support.o editor_files.o files_support.o camp.o
+	$(CC) $(FFLAGS) main.c playground.o map_state.o map_functions.o menu.o list.o files.o editor.o editor_functions.o editor_functions_support.o editor_files.o files_support.o camp.o -o $@
 playground.o: playground.c playground.h files.h
 	$(CC) $(CFLAGS-C) playground.c -o $@ 
 map_functions.o: map_functions.c map_functions.h
@@ -31,3 +31,5 @@ editor_files.o: editor_files.c files_support.h
 	$(CC) $(CFLAGS) editor_files.c -o $@
 editor.o: editor.c editor_functions.c playground.c map_functions.c editor_files.h
 	$(CC) $(CFLAGS-C) editor.c -o $@
+camp.o: camp.c files.h playground.h files_support.h camp.h
+	$(CC) $(CFLAGS) camp.c -o $@

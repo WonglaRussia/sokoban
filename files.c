@@ -6,7 +6,6 @@
 #include <unistd.h> /* read() write() open() close() */
 #include <fcntl.h> /* Symbolyc_constants like "O_RDONLY" etc */
 
-
 /* To list campaigns */
 int list_files();
 
