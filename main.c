@@ -8,7 +8,7 @@
 #include "editor.h"			/* editor() */
 /* DRAFT reallocate it in play functions while speed is changing */
 enum {DELAY_DURATION = 300};
-enum {QUICK_PLAY = 1, EDITOR=2, EXIT = 3};
+enum {QUICK_PLAY = 1, PLAY_CAMPAIGN = 2, EDITOR = 3, EXIT = 4};
 int main()
 {
 	struct list *main_menu;
@@ -24,7 +24,10 @@ int main()
 		desition = play_menu(main_menu);
 		switch(desition){
 			case QUICK_PLAY: {
-				play_level(NULL);	/* NULL makes functions to play example */
+				play_level(NULL);	/* DRAFT NULL makes functions to play example */
+				break;
+			}
+			case PLAY_CAMPAIGN:{ /* DRAFT */
 				break;
 			}
 			case EDITOR: {
