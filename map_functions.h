@@ -3,7 +3,7 @@
 #ifndef MAP_FUNCTIONS_H
 #define MAP_FUNCTIONS_H
 
-#define MAP_SIZE 10
+#define MAP_SIZE 30
 #define WALL 'H'
 #define USER '@'
 #define SPACE ' '
