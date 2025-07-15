@@ -13,7 +13,7 @@ static void get_str(char *str, int limit, int y, int x)
 
 	key = 0;
 	if(limit == 1){
-		str[1] = 0;	
+		str[0] = 0;	
 		return;
 	}
 	while(1){
@@ -39,10 +39,10 @@ static int convert_chars(char *str)
 {
 	int d, tail;
 
-	if(!str)					/* string ended */
+	if(!str[0])					/* string ended */
 		return 0;
-	d = str[0] - 30; 	/* convert current ascii to int '0' = 30*/
-	if( d < 0 || d > 9 || -1 ==	(tail = convert_chars(str + 1)) )
+	d = str[0] - 48; 	/* convert current ascii to int '0' = 30*/
+	if( d < 0 || d > 9 || (-1 ==	(tail = convert_chars(str + 1))))
 		return -1; 			/* out of digit range here or in the tail */
 	d *= (strlen(str) * 10);	
 	return d + tail;
@@ -100,17 +100,25 @@ void	choose_camp(char *cmp_name, const int len_mx)
 int choose_level(void)
 { /*DRAFT add check of the existing levels */
 	int my, mx;
-	int level;
+	int level = 1;
 	char *str_lv;
-	char *message = "Type the number of the level you whant to save. (3 digits)";
-		
+	char *msg = "Type the number of the campaign's level you whant. (3 digits)";
+	char *msg_err = "Only digits. Three digits are valid. Try again";	
 	str_lv = malloc(4);
-	getmaxyx(stdscr, my, mx);
-	mvprintw(my/2 - 1, (mx - strlen(message))/2,"%s", message);
-	get_str(str_lv, 4, my/2, mx/2);
-	level = convert_chars(str_lv);
-	if(level == -1)	/* symbols in the text */
-		level = 1;
+	while(1){					/* In cycle we tries our attempts */
+		getmaxyx(stdscr, my, mx);
+		clear();
+		if(level == -1) /* -1 |=> this is not the first try */ 
+			mvprintw(my/2 - 1, (mx - strlen(msg_err))/2,"%s", msg_err);
+		else
+			mvprintw(my/2 - 1, (mx - strlen(msg))/2,"%s", msg);
+		get_str(str_lv, 4, my/2, mx/2);
+		level = convert_chars(str_lv);
+		if(level == -1)	/* symbols in the text */
+			continue;			/* try again */
+		else
+			break;				/* Function returned appropriate value */
+	}
 	free(str_lv);		
 	return level;	/* DRAFT check the value only 0-9 levels !!! */
 }

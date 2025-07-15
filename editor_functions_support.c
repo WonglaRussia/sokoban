@@ -42,7 +42,7 @@ void show_side_bar(const int shft_y, const int shft_x)
 	struct list *side_bar_content;
 	struct list *temp;
 
-	fill_the_list(&side_bar_content, "w - put a WALL", "u - put a USER", "space - put an empty SPACE", "r - ROCK", "R - put a locked rock", "o - put a POCKET", "s - save the map", "g - load a map", NULL);
+	fill_the_list(&side_bar_content, "w - put a WALL", "u - put a USER", "space - put an empty SPACE", "r - ROCK", "R - put a locked rock", "o - put a POCKET", "s - save the map", "g - load a map", "","q - quit", NULL);
 	i = count_items(side_bar_content);
 
 	for(c = 0; c < i; c++){

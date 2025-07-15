@@ -1,0 +1,6 @@
+# Ignore all object files
+*.o
+# Ignore file named 'sokoban'
+sokoban*
+# Ignore .camp files
+*.camp
