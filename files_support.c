@@ -1,7 +1,7 @@
-/* editor_files_support.c */
+/* files_support.c */
 #include "list.h"		/* append_item(),get_list_content(),list*,count_items()*/
 #include "menu.h"		/* play_menu() */
-#include "editor_files_support.h"
+#include "files_support.h"
 #include <stdlib.h> /* malloc(), free() */
 #include <dirent.h>
 #include <string.h>	/* strncpy() strstr() */
@@ -59,7 +59,7 @@ void	choose_camp(char *cmp_name, const int len_mx)
 	DIR *directory;
 	struct dirent *dp;
 	int my, mx;	/*DRAFT let getting string be separate function !!*/
-	
+	/* DRAFT add .camp suffix mandatorily */	
 	tmp = malloc(len_mx);
 	options = NULL;		
 	directory = opendir(".");

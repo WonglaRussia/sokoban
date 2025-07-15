@@ -1,7 +1,7 @@
 /* editor_files.c */ 
 #include "playground.h"		/* struct level */
 #include "files.h"				/* load_level() save_level() */ 
-#include "editor_files_support.h" /* choose_camp() choose_level() */
+#include "files_support.h" /* choose_camp() choose_level() */
 #include "editor_files.h"	
 #include <stdlib.h>
 
