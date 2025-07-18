@@ -6,7 +6,7 @@
 #include "list.h"
 #include "menu.h"
 #include "editor.h"			/* editor() */
-#include "camp.h"				/* camp() */
+#include "camp.h"			/* camp() */
 /* DRAFT reallocate it in play functions while speed is changing */
 enum {DELAY_DURATION = 300};
 enum {QUICK_PLAY = 1, PLAY_CAMPAIGN = 2, EDITOR = 3, EXIT = 4};

@@ -1,11 +1,10 @@
 /* editor_functions.c */
-#include "map_functions.h"
-#include "playground.h" /* struct level */
-#include "editor_functions.h"
+#include "map_functions.h"		/* MAP_SIZE, map_type */
+#include "playground.h" 		/* struct level */
 #include "editor_functions_support.h" /* show_edited_map() fringe_area() ...
-															... defines SIETE_BAR_WIDTH e.t.c		 */
-#include <curses.h>	/* KEY_ codes, resresh(), clear */
-//#include <stdlib.h> /* free() */
+								... defines SIETE_BAR_WIDTH e.t.c */
+#include "editor_functions.h"
+#include <curses.h>				/* KEY_ codes, resresh(), clear */
 
 void show_editor(struct level *play_ground, const int my, const int mx, const int pos_y, const int  pos_x)
 {
@@ -101,5 +100,3 @@ void update_edited_map(struct level *play_field, const int key, const int positi
 		return;
 	}
 }
-/*void save_map(map_typ map)
-void load_map(map_type map)*/

@@ -1,18 +1,18 @@
 /* editor.c */
 #include "map_functions.h"
-#include "playground.h"	/* struct level */
-#include "editor_files.h" /* save_e_camp() load_e_camp() */
+#include "playground.h"		/* struct level */
+#include "editor_files.h"	/* save_e_camp() load_e_camp() */
 #include "editor_functions.h" /*show_editor,mv_position,update_edited_map*/
 #include "editor.h"
-#include <curses.h>					/* echo(), KEY_ codes */
-#include <stdlib.h>					/* malloc */
+#include <curses.h>			/* echo(), KEY_ codes */
+#include <stdlib.h>			/* malloc */
 void editor(void)
 {
-	int key;						/* Pushed button */
-	int y_pos, x_pos;		/* Current position on the map*/
-	int my, mx;					/* Screen size */
+	int key;			/* Pushed button */
+	int y_pos, x_pos;	/* Current position on the map*/
+	int my, mx;			/* Screen size */
 	struct level *play_field;	
-	map_type map;				/* Map in the editor */
+	map_type map;		/* Map in the editor */
 
 	play_field = malloc(sizeof(struct level));
 	map = play_field -> map;
@@ -36,7 +36,7 @@ void editor(void)
 				key = 0;
 				break;
 			}
-			case 'h':		{}/* arrows or hjkl*/
+			case 'h':		{}	/* arrows cursor or hjkl*/
 			case 'j':		{}
 			case 'k':		{}
 			case 'l':		{}
@@ -48,8 +48,8 @@ void editor(void)
 				show_editor(play_field, my, mx, y_pos, x_pos);
 				key = 0;
 				break;
-			}								/* Here are keys for map edition  */
-			case 'w':	{}
+			}					
+			case 'w':	{}	/* Here are keys for map edition  */
 			case 'u':	{}
 			case ' ':	{}
 			case 'r':	{}
@@ -66,10 +66,10 @@ void editor(void)
 				show_editor(play_field, my, mx, y_pos, x_pos);
 				break;
 			}
-			case 'g':{
+			case 'g':{			/* load a map */
 				load_e_camp( play_field );
 				show_editor(play_field, my, mx, y_pos, x_pos);
-				break; 			/* load a map */
+				break; 			
 			}
 			case 'q':{
 				free(play_field);

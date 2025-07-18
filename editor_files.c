@@ -1,12 +1,12 @@
 /* editor_files.c */ 
 #include "playground.h"		/* struct level */
-#include "files.h"				/* load_level() save_level() */ 
-#include "files_support.h" /* choose_camp() choose_level() */
+#include "files.h"			/* load_level() save_level() */ 
+#include "files_support.h"	/* choose_camp() choose_level() */
 #include "editor_files.h"	
 #include <stdlib.h>
 
-/* save_e_camp load_e_camp functions are designed to let user
-	0. Check level playground readiness. DRAFT
+/*	save_e_camp load_e_camp functions are designed to let user
+	DRAFT 0. Check level playground readiness. 
 	1. Choose a campaign name (.camp file).
 	2. Choose a level number (or just deside to append a level).
 	3. Save/Load level */
@@ -20,7 +20,8 @@ void save_e_camp(struct level *level_addr)
 	level =	choose_level(); /* DRAFT handle NULL level as quit */
 	save_level(campaign_name, level, level_addr);	
 	/* 	DRAFT Write host that playground was saved 
-			DRAFT Check the map you want to save */
+		DRAFT Check the map you want to save
+		DRAFT handle counting level from 1 not 0 */
 	free(campaign_name);
 	return;
 }

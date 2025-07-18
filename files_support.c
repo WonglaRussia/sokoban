@@ -1,6 +1,6 @@
 /* files_support.c */
-#include "list.h"		/* append_item(),get_list_content(),list*,count_items()*/
-#include "menu.h"		/* play_menu() */
+#include "list.h"	/* append_item(),get_list_content(),list*,count_items()*/
+#include "menu.h"	/* play_menu() */
 #include "files_support.h"
 #include <stdlib.h> /* malloc(), free() */
 #include <dirent.h>
@@ -17,38 +17,40 @@ static void get_str(char *str, int limit, int y, int x)
 		return;
 	}
 	while(1){
-		key = getch(); /* char is in key */
+		key = getch();	/* char is in key */
 		if(key != ERR)
 			break;
 	}
 
-	if(key == 10){ 	/* new line */
+	if(key == 10){ 		/* new line */
 		*str = 0;
 		return;
-	} else {				/* DRAFT check the file system requirements to a file name */
-		str[0] = key; /* append the letter */
+	} else {			/* DRAFT check the file system requirements to a file name */
+		str[0] = key; 	/* append the letter */
 		move(y, x);		/* show the letter */
 		addch(key);
 		refresh();
 		get_str(&str[1], limit-1, y, x+1);
 	}
 }
-/* converts string to integer
+/* 	converts string to integer
 	if string conteins letters return -1 */
 static int convert_chars(char *str)
 {
 	int d, tail, i;
 	
-	if(!str[0])					/* string ended */
+	if(!str[0])			/* string ended */
 		return 0;
 	d = str[0] - 48; 	/* convert current ascii to int '0' = 30*/
 	if( d < 0 || d > 9 || (-1 ==	(tail = convert_chars(str + 1))))
-		return -1; 							/* out of digit range here or in the tail */
+		return -1; 		/* out of digit range here or in the tail */
 	if((i = strlen(str + 1))) 	/* positional index 100 10 if tail length  */
 		d *= (strlen(str) * 10 * i);	
 	return d + tail;
 }
-/* Creates menu of .camp files suited in . directory.
+
+/* 
+	Creates menu of .camp files suited in . directory.
 	Retuns the name of the chosen file.
 	Returns NULL if user chose 'quit' 
 	Set new_name != 0 if you whant add optiotion typing new string. (New file).
@@ -79,7 +81,7 @@ void	choose_camp(char *cmp_name, const int len_mx, const int new_name)
 	/* Choose the option 1 = 1st option */
 	desition = play_menu(options);
 
-		/*DRAFT let getting string be separate function !!*/
+	/*DRAFT let getting string be separate function !!*/
 	if(desition == count_items(options) && new_name){/* desition == new file */
 	/* Type a new file name *//* DRAFT add .camp cancatination */
 		clear();
@@ -99,7 +101,9 @@ void	choose_camp(char *cmp_name, const int len_mx, const int new_name)
 	free(tmp);
 	return;
 }
-
+/*
+	Propose to type (choose) a number. Returns the number as an integer.
+*/
 int choose_level(void)
 { /*DRAFT add check of the existing levels */
 	int my, mx;

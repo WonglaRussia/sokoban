@@ -6,11 +6,8 @@
 #include <unistd.h> /* read() write() open() close() */
 #include <fcntl.h> /* Symbolyc_constants like "O_RDONLY" etc */
 
-/* To list campaigns */
-int list_files();
-
-/* Save the map in the campaign file.*/
-/* 	num_lev - number of level. Counting from 0
+/* 	Save the map in the campaign file.
+ 	num_lev - number of level. Counting from 0
 	num_lev = 0 to create a new file */
 int save_level(const char *camp_file_name, const int num_lev, struct level *level_addr)
 {
@@ -39,25 +36,27 @@ int save_level(const char *camp_file_name, const int num_lev, struct level *leve
 	}
 	return 0;
 }
+
 /* Get the level from the campaign file. == 0 - OK */
 /* A level counting from 0 */
 int load_level(const char *camp_file_name, const int num_lev, struct level *level_addr)
 {
 	int fd, i;
-	int offcet;								/* (offcet of a single lev struct)*/
+	int offcet;		/*offcet is a size of a single level struct)*/
 	offcet = sizeof(struct level);
 	fd = open(camp_file_name, O_RDONLY);
 	if(fd == -1){
 		perror(camp_file_name);
 		return 1;
 	}
-	i = lseek(fd, offcet * num_lev, SEEK_SET); /* Offcet. Skip prew num_levs */
+					/* Offcet. Skip prew num_levs */
+	i = lseek(fd, offcet * num_lev, SEEK_SET); 
 	if (i == -1){
 		perror(camp_file_name);
 		return 2;
 	}
-	i = read(fd, level_addr, offcet);				/* Read the map of the num_lev */
-	if (i == -1 || i == 0){
+	i = read(fd, level_addr, offcet);/* Read the map of the num_lev */
+	if (i == -1 || i == 0){ /* -1 - error, 0 - there is no more level EOF */
 		perror("Can not get the map of the num_lev.");
 		return 3;
 	}
