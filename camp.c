@@ -16,7 +16,7 @@ void camp(void)
 	cmp_name = malloc(LENGTH);	
 	playground = malloc(sizeof(struct level));
 
-	choose_camp(cmp_name,	LENGTH);	/* file name is in cmp_name */
+	choose_camp(cmp_name,	LENGTH, 0);	/* file name is in cmp_name */
 /* DRAFT add check of file format corruption */
 	for( lvl=0; 0 == load_level(cmp_name, lvl, playground); lvl++ ){
 		/* play level by level until load function did not retrun != 0 ) */	

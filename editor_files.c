@@ -16,7 +16,7 @@ void save_e_camp(struct level *level_addr)
 	int level;
 
 	campaign_name = malloc(255);		
-	choose_camp(campaign_name, 255);
+	choose_camp(campaign_name, 255, 1);
 	level =	choose_level(); /* DRAFT handle NULL level as quit */
 	save_level(campaign_name, level, level_addr);	
 	/* 	DRAFT Write host that playground was saved 
@@ -33,7 +33,7 @@ void load_e_camp(struct level *level_addr)
 	int level;
 
 	campaign_name = malloc(255);		
-	choose_camp(campaign_name, 255);
+	choose_camp(campaign_name, 255, 0);
 	level =	choose_level();
 	load_level(campaign_name, level, level_addr);
 	free(campaign_name);

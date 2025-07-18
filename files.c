@@ -57,7 +57,7 @@ int load_level(const char *camp_file_name, const int num_lev, struct level *leve
 		return 2;
 	}
 	i = read(fd, level_addr, offcet);				/* Read the map of the num_lev */
-	if (i == -1){
+	if (i == -1 || i == 0){
 		perror("Can not get the map of the num_lev.");
 		return 3;
 	}

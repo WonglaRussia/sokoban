@@ -1,11 +1,11 @@
 /* playground.c */
 #include "playground.h"
-#include "map_functions.h" /* is in the level_structure.h */
+#include "map_functions.h"/* map_type and all function working with it */
+#include "map_state.h"		/* change_map_state() game mechanics */
+#include "files.h"				/* save_level() */
 #include <ncurses.h>
 #include <stdlib.h>
-#include <unistd.h>			/*sleep()*/
-#include "map_state.h"
-#include "files.h"			/* save_level() */
+#include <unistd.h>				/*sleep()*/
 
 static int map_example[MAP_SIZE][MAP_SIZE] = {
 {WALL ,WALL ,WALL ,WALL ,WALL ,WALL ,WALL ,WALL ,WALL ,WALL },
@@ -101,7 +101,7 @@ void play_level(struct level *src_playground)
 						mvprintw(my/2,mx/2 - 5,"%s",win_msg);
 						refresh();
 						free(playground);
-						sleep(5);
+						sleep(2);
 						return;
 					}
 				else

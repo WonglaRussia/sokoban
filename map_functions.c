@@ -1,5 +1,4 @@
 /* map_functions.c */
-#include "playground.h"
 #include "map_functions.h" /*MAP_SIZE map_type, definition of map objects WALL,ROCK e.t.c */
 #include <ncurses.h>
 #include <unistd.h>		/* sleep */

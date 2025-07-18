@@ -50,8 +50,10 @@ static int convert_chars(char *str)
 }
 /* Creates menu of .camp files suited in . directory.
 	Retuns the name of the chosen file.
-	Returns NULL if user chose 'quit' */
-void	choose_camp(char *cmp_name, const int len_mx)
+	Returns NULL if user chose 'quit' 
+	Set new_name != 0 if you whant add optiotion typing new string. (New file).
+*/
+void	choose_camp(char *cmp_name, const int len_mx, const int new_name)
 {
 	size_t name_len;
 	int desition;
@@ -72,14 +74,14 @@ void	choose_camp(char *cmp_name, const int len_mx)
 			append_item(dp -> d_name, &options);
 		}
 	}
-	append_item("CREATE A NEW CAMPAIGN", &options);
-
+	if(new_name)
+		append_item("CREATE A NEW CAMPAIGN", &options);
 	/* Choose the option 1 = 1st option */
 	desition = play_menu(options);
 
 		/*DRAFT let getting string be separate function !!*/
-	if(desition == count_items(options)){/* New campaign */
-	/* Type a new file name */
+	if(desition == count_items(options) && new_name){/* desition == new file */
+	/* Type a new file name *//* DRAFT add .camp cancatination */
 		clear();
 		getmaxyx(stdscr, my, mx);
 		mvprintw(my/2 - 1, mx/2 - 10, "Type the campaign name.");
