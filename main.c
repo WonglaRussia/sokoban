@@ -1,7 +1,7 @@
 /* main.c */
 #include <curses.h>
-#include <stdlib.h>			/* exit(0) */
-#include "map_functions.h" 	/* defines WALL,SPACE etc */
+#include <stdlib.h>         /* exit(0) */
+#include "map_functions.h"  /* defines WALL,SPACE etc */
 #include "playground.h"		/* play_level() */
 #include "list.h"
 #include "menu.h"
